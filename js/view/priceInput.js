@@ -41,12 +41,13 @@ function init(getData) {
             onUpdate: 'inputCost',
         });
     });
-    input.addEventListener('focus', () => {
-        input.value = '';
-    });
+    // input.addEventListener('focus', () => {
+    //     input.value = '';
+    // });
     // input.addEventListener('blur', () => {
     //     cleaveInput.setRawValue(getData.cost);
     // });
+    return cleaveInput;
 }
 
 export default init;
