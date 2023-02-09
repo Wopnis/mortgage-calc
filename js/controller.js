@@ -6,11 +6,19 @@ import updateMinPercents from './view/utils.js';
 import priceInput from './view/priceInput.js';
 import costRange from './view/costRange.js';
 
+import paymentInput from './view/paymentInput.js';
+import paymentRange from './view/paymentRange.js';
+
 window.onload = function (params) {
     const getData = Model.getData();
+
     programs(getData);
+
     const cleaveCost = priceInput(getData);
     const sliderCost = costRange(getData);
+
+    const cleavePayment = paymentInput(getData);
+    const sliderPayment = paymentRange(getData);
 
     document.addEventListener('updateForm', event => {
         Model.setData(event.detail);
@@ -23,8 +31,16 @@ window.onload = function (params) {
     });
 
     function updateFormAndSliders(data) {
+        //update radio buttons
         if (data.onUpdate === 'radioProgram') {
             updateMinPercents(data);
+            //Update payment sliders
+            sliderPayment.noUiSlider.updateOptions({
+                range: {
+                    min: data.minPaymentPercents * 100,
+                    max: data.maxPaymentPercents * 100,
+                },
+            });
         }
         //costInput
         if (data.onUpdate !== 'inputCost') {
@@ -35,6 +51,11 @@ window.onload = function (params) {
         if (data.onUpdate !== 'costSlider') {
             console.log('update cost slider');
             sliderCost.noUiSlider.set(data.cost);
+        }
+
+        //paymentInput
+        if (data.onUpdate !== 'inputPayment') {
+            cleavePayment.setRawValue(data.payment);
         }
     }
 };
