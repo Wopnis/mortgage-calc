@@ -9,6 +9,7 @@ import costRange from './view/costRange.js';
 import paymentInput from './view/paymentInput.js';
 import paymentRange from './view/paymentRange.js';
 
+// eslint-disable-next-line no-unused-vars
 window.onload = function (params) {
     const getData = Model.getData();
 

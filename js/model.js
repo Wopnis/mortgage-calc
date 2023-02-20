@@ -29,6 +29,7 @@ function getData() {
     return { ...data };
 }
 
+// eslint-disable-next-line no-unused-vars
 function getResults(params) {
     return { ...results };
 }

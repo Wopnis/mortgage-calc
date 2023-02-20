@@ -3,6 +3,7 @@ import updateModel from './../utils/updateModel.js';
 function init(getData) {
     const slider = document.querySelector('#slider-downpayment');
 
+    // eslint-disable-next-line no-undef
     noUiSlider.create(slider, {
         start: getData.paymentPercents * 100,
         connect: 'lower',
@@ -12,6 +13,7 @@ function init(getData) {
             min: getData.minPaymentPercents * 100,
             max: getData.maxPaymentPercents * 100,
         },
+        // eslint-disable-next-line no-undef
         format: wNumb({
             decimals: 0,
             thousand: ' ',
